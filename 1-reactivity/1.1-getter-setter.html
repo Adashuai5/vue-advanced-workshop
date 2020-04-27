@@ -12,7 +12,7 @@
         },
         set(newValue) {
           console.log(`setting key "${key}" to: ${newValue}`);
-          realValue = newValue;
+          if (realValue !== newValue) realValue = newValue;
         },
       });
     });
