@@ -6,28 +6,13 @@
 </div>
 
 <script>
-const Foo = {
-  functional: true,
-  render: h => h('div', 'foo')
-}
+  const Foo = {};
 
-const Bar = {
-  functional: true,
-  render: h => h('div', 'bar')
-}
+  const Bar = {};
 
-Vue.component('example', {
-  functional: true,
-  props: {
-    ok: Boolean
-  },
-  render: (h, context) => h(context.props.ok ? Foo : Bar)
-})
+  Vue.component("example", {});
 
-new Vue({
-  el: '#app',
-  data: {
-    ok: true
-  }
-})
+  new Vue({
+    el: "#app",
+  });
 </script>
