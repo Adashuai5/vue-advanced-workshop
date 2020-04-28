@@ -6,13 +6,25 @@
 </div>
 
 <script>
-  const Foo = {};
+  const Foo = {
+    render: (h) => h("div", "foo"),
+  };
 
-  const Bar = {};
+  const Bar = {
+    render: (h) => h("div", "bar"),
+  };
 
-  Vue.component("example", {});
+  Vue.component("example", {
+    functional: true,
+    props: ["ok"],
+    render(h, { props: { ok } }) {
+      const getFooOrBar = ok ? Foo : Bar;
+      return h(getFooOrBar)
+    },
+  });
 
   new Vue({
     el: "#app",
+    data: { ok: true },
   });
 </script>
