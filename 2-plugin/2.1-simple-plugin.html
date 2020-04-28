@@ -6,9 +6,10 @@
       Vue.mixin({
         created() {
           if (this.$options.rules) {
-            Object.keys(this.$options.rules).forEach((key) => {
-              const rule = this.$options.rules[key];
-              this.$watch((key, newValue) => {
+            const rules = this.$options.rules;
+            Object.keys(rules).forEach(key => {
+              const rule = rules[key];
+              this.$watch(key, newValue => {
                 const result = rule.validate(newValue);
                 if (!result) {
                   console.log(rule.message);
@@ -22,14 +23,4 @@
   };
 
   Vue.use(RulesPlugin);
-
-  const vm = new Vue({
-    data: { foo: 10 },
-    rules: {
-      foo: {
-        validate: (value) => value > 1,
-        message: "foo must be greater than one",
-      },
-    },
-  });
 </script>
