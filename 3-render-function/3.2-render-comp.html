@@ -15,11 +15,10 @@
   };
 
   Vue.component("example", {
-    functional: true,
     props: ["ok"],
-    render(h, { props: { ok } }) {
-      const getFooOrBar = ok ? Foo : Bar;
-      return h(getFooOrBar)
+    render(h) {
+      const getFooOrBar = this.ok ? Foo : Bar;
+      return h(getFooOrBar);
     },
   });
 
